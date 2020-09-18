@@ -1,0 +1,98 @@
+<div class="container-fluid">
+  <h1>Evento Promocional</h1>
+  <form class="form-horizontal" novalidate (ngSubmit)="guardar()" [formGroup]="frmG">
+    <fieldset>
+      <div class="form-group"
+           [ngClass]="{'has-error':(frmG.get('fechainicio').touched || frmG.get('fechainicio').dirty) && !frmG.get('fechainicio').valid}">
+        <label class="col-md-2 control-label">Fecha Inicio</label>
+        <div class="col-md-8">
+          <input class="form-control"
+                 required
+                 formControlName="fechainicio"
+                 type="date" />
+          <span class="help-block" *ngIf="(frmG.get('fechainicio').touched || frmG.get('fechainicio').dirty) && frmG.get('fechainicio').errors">
+            <span *ngIf="frmG.get('fechainicio').errors.required">
+              El campo fecha es requerido
+            </span>
+          </span>
+        </div>
+      </div>
+      <div class="form-group"
+           [ngClass]="{'has-error':(frmG.get('fechafin').touched || frmG.get('fechafin').dirty) && !frmG.get('fechafin').valid}">
+        <label class="col-md-2 control-label">Fecha Fin</label>
+        <div class="col-md-8">
+          <input class="form-control"
+                 type="date"
+                 required
+                 formControlName="fechafin" />
+          <span class="help-block" *ngIf="(frmG.get('fechafin').touched || frmG.get('fechafin').dirty) && frmG.get('fechainicio').errors">
+            <span *ngIf="frmG.get('fechafin').errors.required">
+              El campo fechafin es requerido
+            </span>
+          </span>
+        </div>
+      </div>
+      <div class="form-group"
+           [ngClass]="{'has-error':(frmG.get('duracion').touched ) && !frmG.get('duracion').valid}">
+        <label class="col-md-2 control-label">Duracion</label>
+        <div class="col-md-8">
+          <input class="form-control" formControlName="duracion"
+                 pattern="[0-9]+[0-9]$"
+                 required
+                 maxlength="2"
+                 type="text" /> horas
+          <span *ngIf="(frmG.get('duracion').touched && frmG.get('duracion').errors)">
+            El campo duracion no es válido (00 horas)
+          </span>
+        </div>
+      </div>
+      <div class="form-group"
+           [ngClass]="{'has-error':(frmG.get('nombreevento').touched ) && !frmG.get('nombreevento').valid}">
+        <label class="col-md-2 control-label">Nombre Evento</label>
+        <div class="col-md-8">
+          <input class="form-control" formControlName="nombreevento"
+                 required
+                 maxlength="20"
+                 type="text" />
+          <span *ngIf="(frmG.get('nombreevento').touched && frmG.get('nombreevento').errors)">
+            La longitud máxima es 20 caracteres
+          </span>
+        </div>
+      </div>
+      <div class="form-group"
+           [ngClass]="{'has-error':(frmG.get('noAsistentes').touched ) && !frmG.get('noAsistentes').valid}">
+        <label class="col-md-2 control-label">Numero Asistentes</label>
+        <div class="col-md-8">
+          <input class="form-control" formControlName="noAsistentes"
+                 required
+                 maxlength="2"
+                 type="number" />
+          <span *ngIf="(frmG.get('noAsistentes').touched && frmG.get('noAsistentes').errors)">
+            Ingrese solo caracteres numericos
+          </span>
+        </div>
+      </div>
+      <div class="form-group"
+           [ngClass]="{'has-error':(frmG.get('productospromocionar').touched ) && !frmG.get('productospromocionar').valid}">
+        <label class="col-md-2 control-label">Productos a Promocionar</label>
+        <div class="col-md-8">
+          <div class="control-styles">
+            <h4>Box Mode</h4>
+            <ejs-multiselect id='sample-list2' required formControlName="productospromocionar" [dataSource]='sportsData' [mode]='box' [fields]='fields' [placeholder]='waterMark'></ejs-multiselect>
+          </div>          
+          <span *ngIf="(frmG.get('productospromocionar').touched && frmG.get('productospromocionar').errors)">
+            Debe seleccionar al menos un producto
+          </span>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-md-4 col-md-offset-2">
+          <span>
+            <button class="btn btn-primary" type="submit" [disabled]="!frmG.valid">Guardar</button>
+            <button class="btn" [routerLink]='["/fetch-data"]'>Cancelar</button>
+          </span>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>
