@@ -10,6 +10,7 @@ namespace reactiveForm.web.Models
     {
         [Key]
         public int IdEvento { get; set; }
+        [Required(ErrorMessage ="El nombre del evento es obligatorio")]
         public string Nombre { get; set; }
         public DateTime FechaInicio { get; set; }
         public DateTime Fechafin { get; set; }
