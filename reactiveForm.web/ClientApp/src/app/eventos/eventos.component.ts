@@ -13,16 +13,17 @@ export class EventosComponent implements OnInit {
 
   frmG: FormGroup;
   public sportsData: Object[] = [
-    { Id: 'Game1', Game: 'American Football' },
-    { Id: 'Game2', Game: 'Badminton' },
-    { Id: 'Game3', Game: 'Basketball' },
-    { Id: 'Game4', Game: 'Cricket' },
-    { Id: 'Game5', Game: 'Football' },
-    { Id: 'Game6', Game: 'Golf' },
-    { Id: 'Game7', Game: 'Hockey' },
-    { Id: 'Game8', Game: 'Rugby' },
-    { Id: 'Game9', Game: 'Snooker' },
-    { Id: 'Game10', Game: 'Tennis' }
+    { Id: '001', Game: 'Aspirina forte 250gr' },
+    { Id: '002', Game: 'Broncolin 200ml' },
+    { Id: '003', Game: 'Captopril tabletas' },
+    { Id: '004', Game: 'Cafe aspirina' },
+    { Id: '005', Game: 'Colggate Total 12' },
+    { Id: '006', Game: 'Flanax 500' },
+    { Id: '007', Game: 'Herbalae ' },
+    { Id: '008', Game: 'Morfifen' },
+    { Id: '009', Game: 'Unguento Vic' },
+    { Id: '009', Game: 'Tecprosina' }
+
   ];
   // maps the appropriate column to fields property
   public fields: Object = { text: 'Game', value: 'Id' };
