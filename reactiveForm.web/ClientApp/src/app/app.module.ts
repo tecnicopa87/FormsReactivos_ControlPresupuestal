@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule,HTTP_INTERCEPTORS  } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -16,6 +16,11 @@ import { EventosComponent } from './eventos/eventos.component';
 
 // import the MultiSelectModule for the MultiSelect component
 import { MultiSelectModule } from '@syncfusion/ej2-angular-dropdowns';
+import { RegisterComponent } from './account/register/register.component';
+import { AuthGuardService } from './services/auth-guard.service';
+import { AccountService } from './account/account.service';
+import { LogInterceptorService } from './services/log-interceptor.service';
+import { AuthInterceptorService } from './services/auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +31,8 @@ import { MultiSelectModule } from '@syncfusion/ej2-angular-dropdowns';
     FetchDataComponent,
     PersonasComponent,
     PersonasFormComponent,
-    EventosComponent
+    EventosComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -39,12 +45,25 @@ import { MultiSelectModule } from '@syncfusion/ej2-angular-dropdowns';
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'eventos', component: EventosComponent },
-      { path: 'personas', component: PersonasComponent },
-      { path: 'personas-agregar', component: PersonasFormComponent },
-      { path: 'personas-editar/:id', component: PersonasFormComponent }
+      { path: 'personas', component: PersonasComponent ,canActivate:[AuthGuardService]},
+      { path: 'personas-agregar', component: PersonasFormComponent,canActivate: [AuthGuardService] },
+      { path: 'personas-editar/:id', component: PersonasFormComponent,canActivate: [AuthGuardService] },
+      { path: 'register-login', component: RegisterComponent}
     ])
   ],
-  providers: [PersonasService],
+  providers: [PersonasService,
+    AuthGuardService,
+    AccountService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LogInterceptorService,
+      multi:true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService, multi:true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
