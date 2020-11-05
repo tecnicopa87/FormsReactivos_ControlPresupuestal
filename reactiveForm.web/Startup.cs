@@ -7,6 +7,11 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using reactiveForm.web.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication.JwtBearer;//*jwt
+using Microsoft.IdentityModel.Tokens;//*jw
+using System.Text;
+using System;
 
 namespace reactiveForm.web
 {
@@ -24,6 +29,27 @@ namespace reactiveForm.web
         {
             services.AddDbContext<ApplicationDBContext>(
                 options => options.UseSqlServer(Configuration.GetConnectionString("DBConnection")));
+            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+            {
+                options.Password.RequireDigit=false;
+                options.Password.RequireUppercase=false;
+                options.Password.RequiredLength=6;
+            })//*
+                .AddEntityFrameworkStores<ApplicationDBContext>()//
+                .AddDefaultTokenProviders();//
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            .AddJwtBearer(options =>
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateIssuerSigningKey = true,
+                ValidIssuer = "yourdomain.com",
+                ValidAudience = "yourdomain.com",
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["LLAVE_SECRETA"])),
+                ClockSkew = TimeSpan.Zero
+            });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             // In production, the Angular files will be served from this directory
@@ -49,6 +75,8 @@ namespace reactiveForm.web
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
+
+            app.UseAuthentication();//*jwt
 
             app.UseMvc(routes =>
             {

@@ -12,7 +12,8 @@
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "LLAVE_SECRETA":"ASD789QWE456ZXC123RTY789FGH456CBN123",
+        "ASPNETCORE_ENVIRONMENT": "Development"        
       }
     },
     "reactiveForm.web": {
@@ -20,6 +21,7 @@
       "launchBrowser": true,
       "applicationUrl": "https://localhost:5001;http://localhost:5000",
       "environmentVariables": {
+        "LLAVE_SECRETA":"ASD789QWE456ZXC123RTY789FGH456CBN123",
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     }

@@ -39,10 +39,14 @@
 
     <div class="form-group">
       <div class="col-md-4 col-md-offset-2">
-        <span>
+        <span *ngIf="acciondefault">
           <button class="btn btn-primary" type="button" (click)="loguearse()" [disabled]="!formGroup.valid">Loguearse</button>
           &nbsp;&nbsp;
+          <button class="btn" type="button" [routerLink]='["/"]'>Cancelar</button>
+        </span>
+        <span *ngIf="!acciondefault">          
           <button class="btn btn-primary" type="button" (click)="registrarse()" [disabled]="!formGroup.valid">Registrarse</button>
+          &nbsp;&nbsp;
           <button class="btn" type="button" [routerLink]='["/"]'>Cancelar</button>
         </span>
       </div>
