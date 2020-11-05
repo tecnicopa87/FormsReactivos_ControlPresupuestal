@@ -23,7 +23,7 @@ export class RegisterComponent implements OnInit {
   }
 
   loguearse() {
-    let userinfo: IUserInfo = Object.assign({}, this.formGroup.value);
+    let userinfo: IUserInfo = Object.assign({}, this.formGroup.value);   
     this.accountService.login(userinfo).subscribe(token => this.recibirToken(token),
       error => console.log(error));
   }

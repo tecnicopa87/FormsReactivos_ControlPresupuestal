@@ -3,3 +3,19 @@
 ################################################################################
 
 /reactiveForm.web/bin/HPD/Debug/netcoreapp2.1
+/reactiveForm.web/bin/Release/netcoreapp2.1
+/reactiveForm.web/bin/Debug/netcoreapp2.1/publish
+/reactiveForm.web/Properties/PublishProfiles
+
+.vs/AngularNetCoreReactive/DesignTimeBuild/.dtbcache .dtbcache.v2
+.vs/AngularNetCoreReactive/v15/Server/sqlite3/storage.ide-shm
+.vs/AngularNetCoreReactive/v15/Server/sqlite3/storage.ide-wal  
+
+.vs/AngularNetCoreReactive/*.*
+.vs/FormsReactivos_ControlPresupuestal/*.*
+/reactiveForm.web/obj/HPD/Debug/netcoreapp2.1
+/reactiveForm.web/obj/Release/netcoreapp2.1/PubTmp/Out/ClientApp/dist
+/reactiveForm.web/obj/Release/netcoreapp2.1/PubTmp/Out/wwwroot
+/reactiveForm.web/obj/Release/netcoreapp2.1/PubTmp/Out
+/reactiveForm.web/obj/Release/netcoreapp2.1/Razor/Pages
+/reactiveForm.web/obj/Release/netcoreapp2.1

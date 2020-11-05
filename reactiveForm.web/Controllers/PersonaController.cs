@@ -5,10 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;//*
 using Microsoft.AspNetCore.Mvc;
 using reactiveForm.web.Models;
+using Microsoft.AspNetCore.Authorization;//*
+using Microsoft.AspNetCore.Authentication.JwtBearer;//*
 
 namespace reactiveForm.web.Controllers
 {
     [Produces("application/json")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Route("api/personas")]
     public class PersonaController : Controller
     {

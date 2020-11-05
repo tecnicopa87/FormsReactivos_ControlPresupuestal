@@ -12530,27 +12530,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\renov\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
+    "C:\\Users\\pc\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\AngularNetCoreReactive\\reactiveForm.web\\reactiveForm.web.csproj",
+      "projectUniqueName": "C:\\docs\\featureWinx64\\FormsReactivos_ControlPresupuestal\\reactiveForm.web\\reactiveForm.web.csproj",
       "projectName": "reactiveForm.web",
-      "projectPath": "D:\\AngularNetCoreReactive\\reactiveForm.web\\reactiveForm.web.csproj",
-      "packagesPath": "C:\\Users\\renov\\.nuget\\packages\\",
-      "outputPath": "D:\\AngularNetCoreReactive\\reactiveForm.web\\obj\\",
+      "projectPath": "C:\\docs\\featureWinx64\\FormsReactivos_ControlPresupuestal\\reactiveForm.web\\reactiveForm.web.csproj",
+      "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
+      "outputPath": "C:\\docs\\featureWinx64\\FormsReactivos_ControlPresupuestal\\reactiveForm.web\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\renov\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"
@@ -12589,7 +12586,6 @@
             "version": "[2.1.1, )"
           },
           "Microsoft.NETCore.App": {
-            "suppressParent": "All",
             "target": "Package",
             "version": "[2.1.0, )",
             "autoReferenced": true
@@ -12600,16 +12596,10 @@
           }
         },
         "imports": [
-          "net461",
-          "net462",
-          "net47",
-          "net471",
-          "net472",
-          "net48"
+          "net461"
         ],
         "assetTargetFallback": true,
-        "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        "warn": true
       }
     }
   }

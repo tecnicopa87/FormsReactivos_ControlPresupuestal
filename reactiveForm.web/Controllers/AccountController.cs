@@ -9,7 +9,8 @@ using System.IdentityModel.Tokens.Jwt;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.Extensions.Configuration;
-
+using System.IO;
+using System.Text;
 
 namespace reactiveForm.web.Controllers
 {
@@ -37,17 +38,28 @@ namespace reactiveForm.web.Controllers
         public async Task<IActionResult> CreateUser([FromBody] UserInfo model)
         {
             if (ModelState.IsValid)
-            {//  #Si no cumple con reglas de contraseña va mandar como Badrequest#                
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await _userManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
+            {//  #Si no cumple con reglas de contraseña va mandar como Badrequest#  
+                try
                 {
-                    return BuildToken(model);
+                    var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                    var result = await _userManager.CreateAsync(user, model.Password);
+                    if (result.Succeeded)
+                    {
+                        return BuildToken(model);
+                    }
+                    else
+                    {
+                        return BadRequest("Username or password invalid");
+                    }
                 }
-                else
+                catch(Exception ex)
                 {
-                    return BadRequest("Username or password invalid");
+                    using (StreamWriter sw=new StreamWriter(@"c:\directorio\ErrorServices.err"))
+                    {
+                        sw.Write("WEBAPI_CoreAngular:"+ex.Message);
+                    }                        
                 }
+                return NotFound("resultado desconocido");
             }
             else
             {
@@ -69,12 +81,25 @@ namespace reactiveForm.web.Controllers
                 }
                 else
                 {
+                    using (StreamWriter sw = new StreamWriter(@"c:\directorio\ErrorServices.err"))
+                    {
+                        if (result.IsNotAllowed)
+                        {
+                            sw.Write("WEBAPI_CoreAngular:IsNotAllowed");
+                        }
+                        else
+                        {
+                            sw.Write("WEBAPI_CoreAngular:Login Failed");
+                        }
+                            
+                    }
                     ModelState.AddModelError(string.Empty, "Invalid login attempt.");
                     return BadRequest(ModelState);
                 }
             }
             else
             {
+                ModelState.AddModelError(string.Empty, "Modelo invalido.");
                 return BadRequest(ModelState);
             }
         }

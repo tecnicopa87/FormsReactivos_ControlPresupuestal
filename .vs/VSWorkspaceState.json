@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\reactiveForm.web\\ClientApp",
+    "\\reactiveForm.web\\ClientApp\\src",
+    "\\reactiveForm.web\\ClientApp\\src\\app",
+    "\\reactiveForm.web\\ClientApp\\src\\app\\eventos",
+    "\\reactiveForm.web\\ClientApp\\src\\app\\fetch-data",
+    "\\reactiveForm.web\\ClientApp\\src\\app\\nav-menu",
+    "\\reactiveForm.web\\ClientApp\\src\\app\\personas"
+  ],
+  "SelectedNode": "\\AngularNetCoreReactive.sln",
+  "PreviewInSolutionExplorer": false
+}
