@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;//*
 namespace reactiveForm.web.Controllers
 {
     [Produces("application/json")]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize(AuthenticationSchemes= JwtBearerDefaults.AuthenticationScheme)]
     [Route("api/personas")]
     public class PersonaController : Controller
     {
@@ -25,11 +25,11 @@ namespace reactiveForm.web.Controllers
         public IEnumerable<Persona> GetPerson()
         {
              return _context.Personas.ToList();
-           // return new List<Persona>()
-           //{
-           //    new Persona(){ Id=1,Name="Joaquin Lopez",FechaNacimiento="02/05/1985",Email="santi@gmail.com"},
-           //new Persona(){Id=2, Name="Lula Castillo",FechaNacimiento="02/05/1991",Email="lulachula@gmail.com"}
-           //};
+        //     return new List<Persona>()
+        //    {
+        //        new Persona(){ Id=1,Name="Joaquin Lopez",FechaNacimiento="02/05/1985",Email="santi@gmail.com"},
+        //    new Persona(){Id=2, Name="Lula Castillo",FechaNacimiento="02/05/1991",Email="lulachula@gmail.com"}
+        //    };
         }
 
         // POST: api/Persona

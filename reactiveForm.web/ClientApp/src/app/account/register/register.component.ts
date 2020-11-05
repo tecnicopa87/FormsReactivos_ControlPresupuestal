@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { AccountService } from '../account.service';
-import { IUserInfo } from '../user-Info';
-import { Router } from '@angular/router';
-import { userInfo } from 'os';
+import { IUserInfo } from '../user-info';
+import { Router, ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-register',
@@ -12,10 +12,14 @@ import { userInfo } from 'os';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, private accountService: AccountService, private ruoter: Router) { }
+  constructor(private fb: FormBuilder, private accountService: AccountService, private ruoter: Router, private rutaactiva: ActivatedRoute) { }
   formGroup: FormGroup;
+  acciondefault: boolean;
 
   ngOnInit() {
+    this.rutaactiva.params.subscribe(params=>{ 
+      this.acciondefault= params['i']=="i"? true:false})//el menu dará el /i o /r en la ruta
+      
     this.formGroup = this.fb.group({
       email: '',
       password: '',

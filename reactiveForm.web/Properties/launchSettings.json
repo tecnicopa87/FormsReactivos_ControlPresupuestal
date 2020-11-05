@@ -1,4 +1,4 @@
-{
+﻿{
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
@@ -12,17 +12,18 @@
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
-        "LLAVE_SECRETA": "SER159FG123ERT789HJK456DFGPLM",
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "LLAVE_SECRETA":"ASD789QWE456ZXC123RTY789FGH456CBN123",
+        "ASPNETCORE_ENVIRONMENT": "Development"        
       }
     },
     "reactiveForm.web": {
       "commandName": "Project",
       "launchBrowser": true,
+      "applicationUrl": "https://localhost:5001;http://localhost:5000",
       "environmentVariables": {
+        "LLAVE_SECRETA":"ASD789QWE456ZXC123RTY789FGH456CBN123",
         "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "applicationUrl": "https://localhost:5001;http://localhost:5000"
+      }
     }
   }
 }
