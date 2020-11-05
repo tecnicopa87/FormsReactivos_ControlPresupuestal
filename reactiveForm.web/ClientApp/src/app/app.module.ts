@@ -45,9 +45,10 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'eventos', component: EventosComponent },
-      { path: 'personas', component: PersonasComponent ,canActivate:[AuthGuardService]},
+      { path: 'personas', component: PersonasComponent,canActivate: [AuthGuardService]  },
       { path: 'personas-agregar', component: PersonasFormComponent,canActivate: [AuthGuardService] },
       { path: 'personas-editar/:id', component: PersonasFormComponent,canActivate: [AuthGuardService] },
+      { path: 'register-login/:i', component: RegisterComponent},
       { path: 'register-login', component: RegisterComponent}
     ])
   ],
