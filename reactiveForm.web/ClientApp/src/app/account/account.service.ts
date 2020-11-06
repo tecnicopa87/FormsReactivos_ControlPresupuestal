@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/Observable';
 export class AccountService {
   
   private apiUrl = this.baseUrl + "api/account";
+  public username: string;
 
   constructor(private http: HttpClient,@Inject('BASE_URL') private baseUrl:string) { }
 
@@ -15,6 +16,7 @@ export class AccountService {
   }
 
   login(userinfo: IUserInfo) {
+    localStorage.setItem ("user",userinfo.email);    
     return this.http.post<any>(this.apiUrl + "/Login", userinfo);
   }
 
@@ -47,4 +49,5 @@ export class AccountService {
     }
 
   }
+  
 }

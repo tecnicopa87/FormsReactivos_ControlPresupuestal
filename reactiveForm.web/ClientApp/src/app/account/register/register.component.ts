@@ -29,17 +29,17 @@ export class RegisterComponent implements OnInit {
   loguearse() {
     let userinfo: IUserInfo = Object.assign({}, this.formGroup.value);   
     this.accountService.login(userinfo).subscribe(token => this.recibirToken(token),
-      error => console.log(error));
+      error => alert('intento de login inválido'));//console.log(error)
   }
 
   registrarse() {
     let userinfo: IUserInfo = Object.assign({}, this.formGroup.value);
     this.accountService.create(userinfo).subscribe(token => this.recibirToken(token),
-      error => alert(error));//  console.warn()
+      error => alert('No se registró,verifique que usa caracteres no alfanumericos, una longitud de 6'));//  console.warn()
   }
 
   recibirToken(token) {
-    console.log(token.token);
+    //console.log(token.token);
     localStorage.setItem('token', token.token);
     localStorage.setItem('tokenExpiration', token.expiration);
     this.ruoter.navigate(['']);

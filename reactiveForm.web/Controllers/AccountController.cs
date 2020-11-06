@@ -54,7 +54,7 @@ namespace reactiveForm.web.Controllers
                     {
                        sw.Write("WebAPI_CoreAngular:(Datos incorrectos)"+result.Errors); 
                     }  
-                    ModelState.AddModelError(string.Empty, "Longitud debe ser 6 caracteres,minusculas");
+                    ModelState.AddModelError("ErrorCreated", "Longitud debe ser 6 caracteres,minusculas");
                     return BadRequest(ModelState);
                 }
             }

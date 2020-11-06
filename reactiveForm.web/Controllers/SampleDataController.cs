@@ -11,7 +11,7 @@ namespace reactiveForm.web.Controllers
     {
         private static string[] Summaries = new[]
         {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+            "Parque Hundido", "Reforma", "Polanco", "Anzures", "Centro", "Los Pinos", "L. Cardenas", "Scorching","Tlanepantla"
         };
 
         [HttpGet("[action]")]
@@ -21,7 +21,9 @@ namespace reactiveForm.web.Controllers
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 DateFormatted = DateTime.Now.AddDays(index).ToString("d"),
-                TemperatureC = rng.Next(-20, 55),
+                DateFinFormatted= DateTime.Now.AddDays(index+2).ToString("d"),
+                Duracion = rng.Next(-20, 55),
+                
                 Summary = Summaries[rng.Next(Summaries.Length)]
             });
         }
@@ -29,16 +31,18 @@ namespace reactiveForm.web.Controllers
         public class WeatherForecast
         {
             public string  DateFormatted { get; set; }
-            public int TemperatureC { get; set; }
-            public string Summary { get; set; }
-
-            public int TemperatureF
+            public string DateFinFormatted { get; set; }
+            public int Duracion { get; set; }
+            public int Asistentes
             {
                 get
                 {
-                    return 32 + (int)(TemperatureC / 0.5556);
+                    return 32 + (int)(Duracion / 0.5556);
                 }
             }
+            public string Summary { get; set; }
+
+           
         }
     }
 }

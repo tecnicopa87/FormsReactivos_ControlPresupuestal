@@ -1,4 +1,4 @@
-<h1>Muestreo temperatura °</h1>
+<h1>Lista de Eventos </h1>
 
 <p>El componente demuestra como elanzar datos de servidor.</p>
 
@@ -7,17 +7,19 @@
 <table class='table' *ngIf="forecasts">
   <thead>
     <tr>
-      <th>Date</th>
-      <th>Temp. (C)</th>
-      <th>Temp. (F)</th>
-      <th>Summary</th>
+      <th>FechaInicio</th>
+      <th>FechaFin</th>
+      <th>Duracion(Hrs.)</th>
+      <th>No. Asistentes</th>
+      <th>Zona del Evento</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let forecast of forecasts">
       <td>{{ forecast.dateFormatted }}</td>
-      <td>{{ forecast.temperatureC }}</td>
-      <td>{{ forecast.temperatureF }}</td>
+      <td>{{ forecast.dateFinFormatted}}</td>
+      <td>{{ forecast.duracion }}</td>
+      <td>{{ forecast.asistentes }}</td>
       <td>{{ forecast.summary }}</td>
     </tr>
   </tbody>

@@ -17,11 +17,19 @@
                 <span class='glyphicon glyphicon-home'></span> Home
               </a>
             </li>
-            <li [routerLinkActive]='["link-active"]'>
+            <li *ngIf="nombreusuario==''" [routerLinkActive]='["link-active"]'>
               <a [routerLink]='["/register-login/i"]' (click)='collapse()'>
-                <span class='glyphicon glyphicon-user'> Login</span>       
+                <span class='glyphicon glyphicon-user'> Login</span>
               </a><a [routerLink]='["/register-login"]' (click)='collapse()'>
-                <span class='glyphicon glyphicon-user'> Register</span> 
+                <span class='glyphicon glyphicon-user'> Register</span>
+              </a>
+            </li>
+            
+            <li *ngIf="nombreusuario!=''" [routerLinkActive]='["link-active"]'>
+              <a [routerLink]='["/register-login/i"]' (click)='collapse()'>
+                <span class='glyphicon glyphicon-user'>
+                  {{nombreusuario}}
+                </span>
               </a>
             </li>
             <li [routerLinkActive]='["link-active"]'>

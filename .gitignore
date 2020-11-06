@@ -19,3 +19,5 @@
 /reactiveForm.web/obj/Release/netcoreapp2.1/PubTmp/Out
 /reactiveForm.web/obj/Release/netcoreapp2.1/Razor/Pages
 /reactiveForm.web/obj/Release/netcoreapp2.1
+/reactiveForm.web/obj/netcoreapp2.1/win-x64/host
+/reactiveForm.web/obj/publish/win-x64
