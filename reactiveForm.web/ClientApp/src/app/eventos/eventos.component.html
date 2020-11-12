@@ -3,30 +3,30 @@
   <form class="form-horizontal" novalidate (ngSubmit)="guardar()" [formGroup]="frmG">
     <fieldset>
       <div class="form-group"
-           [ngClass]="{'has-error':(frmG.get('fechainicio').touched || frmG.get('fechainicio').dirty) && !frmG.get('fechainicio').valid}">
+           [ngClass]="{'has-error':(frmG.get('fechaInicio').touched || frmG.get('fechaInicio').dirty) && !frmG.get('fechaInicio').valid}">
         <label class="col-md-2 control-label">Fecha Inicio</label>
         <div class="col-md-8">
           <input class="form-control"
                  required
-                 formControlName="fechainicio"
+                 formControlName="fechaInicio"
                  type="date" />
-          <span class="help-block" *ngIf="(frmG.get('fechainicio').touched || frmG.get('fechainicio').dirty) && frmG.get('fechainicio').errors">
-            <span *ngIf="frmG.get('fechainicio').errors.required">
+          <span class="help-block" *ngIf="(frmG.get('fechaInicio').touched || frmG.get('fechaInicio').dirty) && frmG.get('fechaInicio').errors">
+            <span *ngIf="frmG.get('fechaInicio').errors.required">
               El campo fecha es requerido
             </span>
           </span>
         </div>
       </div>
       <div class="form-group"
-           [ngClass]="{'has-error':(frmG.get('fechafin').touched || frmG.get('fechafin').dirty) && !frmG.get('fechafin').valid}">
+           [ngClass]="{'has-error':(frmG.get('fechaFin').touched || frmG.get('fechaFin').dirty) && !frmG.get('fechaFin').valid}">
         <label class="col-md-2 control-label">Fecha Fin</label>
         <div class="col-md-8">
           <input class="form-control"
                  type="date"
                  required
-                 formControlName="fechafin" />
-          <span class="help-block" *ngIf="(frmG.get('fechafin').touched || frmG.get('fechafin').dirty) && frmG.get('fechainicio').errors">
-            <span *ngIf="frmG.get('fechafin').errors.required">
+                 formControlName="fechaFin" />
+          <span class="help-block" *ngIf="(frmG.get('fechaFin').touched || frmG.get('fechaFin').dirty) && frmG.get('fechaFin').errors">
+            <span *ngIf="frmG.get('fechaFin').errors.required">
               El campo fechafin es requerido
             </span>
           </span>
@@ -79,20 +79,30 @@
           <div class="control-styles">
             <h4>Catalogo</h4>
             <ejs-multiselect id='sample-list2' required formControlName="productospromocionar" [dataSource]='sportsData' [mode]='box' [fields]='fields' [placeholder]='waterMark'></ejs-multiselect>
-          </div>          
+          </div>
           <span *ngIf="(frmG.get('productospromocionar').touched && frmG.get('productospromocionar').errors)">
             Debe seleccionar al menos un producto
           </span>
         </div>
       </div>
       <div class="form-group">
-        <div class="col-md-4 col-md-offset-2">
-          <span>
-            <button class="btn btn-primary" type="submit" [disabled]="!frmG.valid">Guardar</button>
-            <button class="btn" [routerLink]='["/fetch-data"]'>Cancelar</button>
-          </span>
+        <label class="col-md-2 control-label">Lugar del Evento</label>
+        <div class="col-md-8">
+          <select formControlName="lugarevento">
+            <option *ngFor="let zona of zonasEvento" >
+              {{zona}}
+            </option>
+          </select>
         </div>
-      </div>
-    </fieldset>
+        </div>
+        <div class="form-group">
+          <div class="col-md-4 col-md-offset-2">
+            <span>
+              <button class="btn btn-primary" type="submit" [disabled]="!frmG.valid">Guardar</button>
+              <button class="btn" [routerLink]='["/fetch-data"]'>Cancelar</button>
+            </span>
+          </div>
+        </div>
+</fieldset>
   </form>
 </div>

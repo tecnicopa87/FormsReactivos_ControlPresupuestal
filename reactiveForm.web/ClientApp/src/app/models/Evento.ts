@@ -1,7 +1,7 @@
 export class Evento {
   fechaInicio: Date;
   fechaFin: Date;
-  duracion: Date;//luego dar formato .getHours
+  duracion: number; //Date//luego dar formato .getHours
   nombreevento: string;
   noAsistentes: number;
   productospromocionar: Array<string>;

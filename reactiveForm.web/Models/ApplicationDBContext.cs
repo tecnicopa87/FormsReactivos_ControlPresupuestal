@@ -7,12 +7,17 @@ using System.Threading.Tasks;
 
 namespace reactiveForm.web.Models
 {
-    public class ApplicationDBContext:IdentityDbContext<ApplicationUser>
+    public class ApplicationDBContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options)
-            :base(options)
+            : base(options)
         {
 
+
+        }
+        public ApplicationDBContext()
+        {
+            //Permite usar Contexto sin options
         }
         public DbSet<Persona> Personas { get; set; }
         public DbSet<Evento> Eventos { get; set; }

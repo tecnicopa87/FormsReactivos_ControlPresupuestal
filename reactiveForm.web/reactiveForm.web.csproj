@@ -24,9 +24,11 @@
     <Compile Remove="Migrations\20200910004423_Personas.Designer.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="ClientApp\src\app\eventos\eventotmp.ts" />
     <None Remove="ClientApp\src\app\personas\personas.ts" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\eventos\eventotmp.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\personas\personas.ts" />
   </ItemGroup>
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

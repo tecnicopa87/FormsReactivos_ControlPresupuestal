@@ -29,6 +29,7 @@ namespace reactiveForm.web
         {
             services.AddDbContext<ApplicationDBContext>(
                 options => options.UseSqlServer(Configuration.GetConnectionString("DBConnection")));
+
             services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
                 options.Password.RequireDigit=false;

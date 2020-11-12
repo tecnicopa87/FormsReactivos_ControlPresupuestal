@@ -13,6 +13,7 @@ import { PersonasComponent } from './personas/personas.component';
 import { PersonasService } from './personas/personas.service';
 import { PersonasFormComponent } from './personas/personas-form/personas-form.component';
 import { EventosComponent } from './eventos/eventos.component';
+import { EventosService } from './eventos/eventos.service';
 
 // import the MultiSelectModule for the MultiSelect component
 import { MultiSelectModule } from '@syncfusion/ej2-angular-dropdowns';
@@ -53,6 +54,7 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
     ])
   ],
   providers: [PersonasService,
+    EventosService,
     AuthGuardService,
     AccountService,
     {
