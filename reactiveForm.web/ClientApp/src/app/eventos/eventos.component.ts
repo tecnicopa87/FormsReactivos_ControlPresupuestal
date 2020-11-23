@@ -63,7 +63,7 @@ export class EventosComponent implements OnInit {
     //alert(evento.productospromocionar[1]);
     this.eventoService.agregaEvento(evento).subscribe(result => {
       this.onSaveSuccess()
-    }, error => console.log('ErrorcreatedEvento:' + error[0]));
+    }, error => console.log('ErrorcreatedEvento:' + error.error['301'][0]));
   }
   onSaveSuccess() {
     this.router.navigate(["/fetch-data"]);

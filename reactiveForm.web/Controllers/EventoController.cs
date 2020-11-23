@@ -40,6 +40,7 @@ namespace reactiveForm.web.Controllers
                 DBContext.Add(evento);
                 DBContext.SaveChanges();
                 return Created("/",model);
+                 
             }
             catch(Exception ex)
             {
