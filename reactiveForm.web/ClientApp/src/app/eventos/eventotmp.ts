@@ -4,4 +4,5 @@ export interface EventoT {
   duracion: number;
   asistentes: number;
   summary: string;
+  productospromocionar:string[];
 }

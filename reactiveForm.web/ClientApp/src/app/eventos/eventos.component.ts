@@ -58,8 +58,8 @@ export class EventosComponent implements OnInit {
   guardar() {
     let _evento: Evento = Object.assign({}, this.frmG.value);
     //let tiempo = parseInt(_evento.duracion); //Number.parseInt(        
-    const evento: EventoT = { dateFormatted: _evento.fechaInicio, dateFinFormatted: _evento.fechaFin, duracion: _evento.duracion, asistentes: _evento.noAsistentes, summary: _evento.lugarevento }
-    alert(evento.summary);
+    const evento: EventoT = { dateFormatted: _evento.fechaInicio, dateFinFormatted: _evento.fechaFin, duracion: _evento.duracion, asistentes: _evento.noAsistentes, summary: _evento.lugarevento,productospromocionar:_evento.productospromocionar }
+    alert(evento.productospromocionar);
     //alert(evento.productospromocionar[1]);
     this.eventoService.agregaEvento(evento).subscribe(result => {
       this.onSaveSuccess()

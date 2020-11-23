@@ -35,6 +35,7 @@ namespace reactiveForm.web.Controllers
                 evento.Duracion = time;
                 evento.NoAsistentes = model.asistentes;
                 evento.LugarEvento = model.Summary;
+                evento.ProductosPromocionar= ConvierteArreglo(model.Productospromocionar);
 
                 DBContext.Add(evento);
                 DBContext.SaveChanges();
@@ -47,6 +48,14 @@ namespace reactiveForm.web.Controllers
             }
             
 
+        }
+        private string ConvierteArreglo(string[] arreglo){
+          string strconvertido="";
+          foreach(var itm in arreglo){
+              strconvertido +=itm +"&&";
+          }
+
+          return strconvertido;
         }
         [HttpGet("[action]")]
         public IEnumerable<DTOEventos> ListaEventos()
@@ -82,7 +91,7 @@ namespace reactiveForm.web.Controllers
             }
             public string Summary { get; set; }
 
-           
+           public string[] Productospromocionar{get;set;}
         }
     }
 }
