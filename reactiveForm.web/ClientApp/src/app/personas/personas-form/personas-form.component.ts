@@ -41,6 +41,7 @@ export class PersonasFormComponent implements OnInit {
   cargarFormulario(person: IPersona) {
     var dp = new DatePipe(navigator.language);// <- como hacer pipe, cuando usamos DateTime en Backend
     var format = "yyyy-MM-dd";//    es necesario dar formato a fecha
+    //alert(dp.transform(person.fechaNacimiento, "yyyy-MM-dd", "(UTC-06:00) Guadalajara,Ciudad de México,Monterrey", "es-MX"));
     this.formGroup.patchValue({
       name: person.name,
       email: person.email,

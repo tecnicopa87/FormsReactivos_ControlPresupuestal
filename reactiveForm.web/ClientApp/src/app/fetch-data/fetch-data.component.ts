@@ -16,6 +16,7 @@ export class FetchDataComponent {
 }
 
 interface Eventtmp {
+  idEvento: number;
   dateFormatted: Date;
   dateFinFormatted: Date;
   duracion: number;

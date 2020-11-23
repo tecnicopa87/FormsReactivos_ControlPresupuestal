@@ -15,7 +15,7 @@ namespace reactiveForm.web.Controllers
         [HttpGet("[action]")]
         public IEnumerable<string> ZonasEvento ()
         {
-            string[] zonas = { "Parque Hundido", "Reforma", "Polanco", "Anzures", "Centro", "Los Pinos", "L. Cardenas", "Scorching", "Tlanepantla" };
+            string[] zonas = { "Parque Hundido", "Reforma", "Polanco", "Anzures", "Centro", "Los Pinos", "L. Cardenas", "Autodromo", "Tlanepantla" };
             return zonas;
         }
         public EventoController(ApplicationDBContext dBContext)
@@ -28,6 +28,7 @@ namespace reactiveForm.web.Controllers
             try
             {
                 Evento evento = new Evento();
+                evento.Nombre = model.Nombreevento;
                 evento.FechaInicio = Convert.ToDateTime(model.dateFormatted);
                 evento.Fechafin = Convert.ToDateTime(model.dateFinFormatted);
                 DateTime Actual = model.dateFormatted.AddHours(model.duracion);
@@ -54,21 +55,42 @@ namespace reactiveForm.web.Controllers
                         
             List<DTOEventos> eventos = new List<DTOEventos>();
              var query = (from ev in DBContext.Eventos
-                         select new { ev.FechaInicio, ev.Fechafin, ev.Duracion, ev.NoAsistentes,ev.LugarEvento }).ToList();
+                         select new {ev.IdEvento, ev.FechaInicio, ev.Fechafin, ev.Duracion, ev.NoAsistentes,ev.LugarEvento }).ToList();
 
             foreach(var e in query)
             {
                 DTOEventos dtoEvent = new DTOEventos();
                 dtoEvent.dateFormatted = e.FechaInicio;
                 dtoEvent.dateFinFormatted = e.Fechafin;
-                dtoEvent.duracion = e.Duracion.Hours;
+                dtoEvent.duracion = e.Duracion.Hours;//Duracion es TimeSpan en BD
                 dtoEvent.asistentes = e.NoAsistentes;
                 dtoEvent.Summary = e.LugarEvento;
+                dtoEvent.IdEvento = e.IdEvento;
                 eventos.Add(dtoEvent);
             }
             
             return eventos;
 
+        }
+        [HttpGet("[action]/{id}")]
+        public  DTOEventos getEvento(int id)
+        {
+            DTOEventos dto = new DTOEventos();
+            if (id==0)
+            {                                
+                return dto;
+            }
+            var obj = (from v in DBContext.Eventos
+                       where v.IdEvento == id
+                       select new { v.IdEvento,v.Nombre, v.FechaInicio, v.Fechafin, v.Duracion, v.NoAsistentes, v.LugarEvento }).First();
+            dto.IdEvento = obj.IdEvento;
+            dto.Nombreevento = obj.Nombre;
+            dto.dateFormatted = obj.FechaInicio;
+            dto.dateFinFormatted = obj.Fechafin; 
+            dto.duracion = obj.Duracion.Hours;// int duracion=> TimeSpan Duracion
+            dto.asistentes = obj.NoAsistentes;
+            dto.Summary = obj.LugarEvento;
+            return dto;
         }
 
         public class DTOEventos
@@ -81,8 +103,10 @@ namespace reactiveForm.web.Controllers
                 get;set;
             }
             public string Summary { get; set; }
+            public int IdEvento { get; set; }
+            public string Nombreevento { get; set; }
 
-           
+
         }
     }
 }

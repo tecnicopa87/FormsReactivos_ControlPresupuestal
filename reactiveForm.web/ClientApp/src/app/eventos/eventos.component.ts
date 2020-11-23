@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { EventoT } from '../eventos/eventotmp';//'../models/Evento'; <- clase real completa está en Models/Evento
 import { EventosService } from './eventos.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Evento } from '../models/Evento';
-import { isNumber } from 'util';
-import { parse } from 'querystring';
+//import { isNumber } from 'util';
+//import { parse } from 'querystring';
+import { DatePipe } from '@angular/common';
 
 //npm i @syncfusion/ej2-angular-dropdowns --save  <-Librería de terceros
 @Component({
@@ -16,9 +17,10 @@ import { parse } from 'querystring';
 export class EventosComponent implements OnInit {
 
   public zonasEvento: Object[];
+  private modoVer: boolean;
 
-  constructor(private fb: FormBuilder, private eventoService: EventosService, private router: Router) {
-     eventoService.zonasEvento().subscribe(lista => this.zonasEvento = lista);
+  constructor(private fb: FormBuilder, private eventoService: EventosService, private router: Router, private activeRoute: ActivatedRoute) {
+    eventoService.zonasEvento().subscribe(lista => this.zonasEvento = lista);
   }
 
   frmG: FormGroup;
@@ -51,14 +53,28 @@ export class EventosComponent implements OnInit {
       nombreevento: '',
       noAsistentes: '',
       productospromocionar: '',
-      lugarevento:''
+      lugarevento: ''
+    });
+
+    this.activeRoute.params.subscribe(param => {
+      if (param['id'] == null) {
+        return;
+      } else {
+        //llamr a servicio obtenerEvento
+        this.modoVer = true;
+        console.log('encontró id');
+        this.eventoService.getEvento(param['id']).subscribe(event =>
+          this.cargaFormulario(event)
+        );
+      }
+
     });
   }
 
   guardar() {
     let _evento: Evento = Object.assign({}, this.frmG.value);
     //let tiempo = parseInt(_evento.duracion); //Number.parseInt(        
-    const evento: EventoT = { dateFormatted: _evento.fechaInicio, dateFinFormatted: _evento.fechaFin, duracion: _evento.duracion, asistentes: _evento.noAsistentes, summary: _evento.lugarevento }
+    const evento: EventoT = { idEvento: 0, nombreevento: _evento.nombreevento, dateFormatted: _evento.fechaInicio, dateFinFormatted: _evento.fechaFin, duracion: _evento.duracion, asistentes: _evento.noAsistentes, summary: _evento.lugarevento }
     alert(evento.summary);
     //alert(evento.productospromocionar[1]);
     this.eventoService.agregaEvento(evento).subscribe(result => {
@@ -67,5 +83,24 @@ export class EventosComponent implements OnInit {
   }
   onSaveSuccess() {
     this.router.navigate(["/fetch-data"]);
+  }
+
+  cargaFormulario(mievent: EventoT) {
+    var dp = new DatePipe(navigator.language);// <- como hacer pipe, cuando usamos DateTime en Backend
+    var format = "yyyy-MM-dd";//
+    var timezone = "(UTC-06:00) Guadalajara,Ciudad de México,Monterrey";
+    //console.log(dp.transform(mievent.dateFormatted, "short"));
+    //var fechafinal = dp.transform(mievent.dateFinFormatted, "yyyy-MM-dd","(UTC-06:00) Guadalajara,Ciudad de México,Monterrey","es-MX");
+    //alert(dp.transform(mievent.dateFormatted, "yyyy-MM-dd", "(UTC-06:00) Guadalajara,Ciudad de México,Monterrey", "es-MX"));
+    this.frmG.patchValue({
+      fechaInicio: dp.transform(mievent.dateFormatted, format, timezone, "es-MX"),
+      fechaFin: dp.transform(mievent.dateFinFormatted, format, timezone, "es-MX"),
+      duracion: mievent.duracion,
+      nombreevento: mievent.nombreevento,
+      noAsistentes: mievent.asistentes,
+      productospromocionar: ["falta p1", "Colggate Total 12"],
+      lugarevento: mievent.summary
+    })
+
   }
 }

@@ -12,6 +12,7 @@
       <th>Duracion(Hrs.)</th>
       <th>No. Asistentes</th>
       <th>Zona del Evento</th>
+      <th>Ver mas</th>
     </tr>
   </thead>
   <tbody>
@@ -21,6 +22,7 @@
       <td>{{ forecast.duracion }}</td>
       <td>{{ forecast.asistentes }}</td>
       <td>{{ forecast.summary }}</td>
+      <td><a [routerLink]="['/eventos/'+forecast.idEvento]">Detalle</a></td>
     </tr>
   </tbody>
 </table>

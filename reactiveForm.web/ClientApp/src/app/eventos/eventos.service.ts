@@ -18,4 +18,8 @@ export class EventosService {
   zonasEvento(): Observable<any> {
     return this.http.get<any>(this.apiURL + '/ZonasEvento');
   }
+
+  getEvento(id: number): Observable<EventoT> {
+    return this.http.get<EventoT>(this.apiURL + '/getEvento/' + id);
+  }
 }

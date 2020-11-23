@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID} from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule,HTTP_INTERCEPTORS  } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
@@ -22,6 +22,12 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { AccountService } from './account/account.service';
 import { LogInterceptorService } from './services/log-interceptor.service';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
+import { ErroresServiceService } from './serivice/errores-service.service';
+
+//Truco de internacionalizacion-zona horaria
+import { registerLocaleData } from '@angular/common';
+import localeSpanish  from '@angular/common/locales/es-MX';
+registerLocaleData(localeSpanish);
 
 @NgModule({
   declarations: [
@@ -46,6 +52,7 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'eventos', component: EventosComponent },
+      { path: 'eventos/:id', component: EventosComponent },
       { path: 'personas', component: PersonasComponent,canActivate: [AuthGuardService]  },
       { path: 'personas-agregar', component: PersonasFormComponent,canActivate: [AuthGuardService] },
       { path: 'personas-editar/:id', component: PersonasFormComponent,canActivate: [AuthGuardService] },
@@ -57,6 +64,8 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
     EventosService,
     AuthGuardService,
     AccountService,
+    ErroresServiceService,
+    { provide: LOCALE_ID, useValue: 'es-MX' },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LogInterceptorService,

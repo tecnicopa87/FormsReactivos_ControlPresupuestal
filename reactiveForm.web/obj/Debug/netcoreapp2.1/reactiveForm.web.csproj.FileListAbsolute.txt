@@ -57,7 +57,6 @@ C:\docs\featureWinx64\FormsReactivos_ControlPresupuestal\reactiveForm.web\bin\De
 C:\docs\featureWinx64\FormsReactivos_ControlPresupuestal\reactiveForm.web\bin\Debug\netcoreapp2.1\reactiveForm.web.pdb
 C:\docs\featureWinx64\FormsReactivos_ControlPresupuestal\reactiveForm.web\bin\Debug\netcoreapp2.1\reactiveForm.web.Views.dll
 C:\docs\featureWinx64\FormsReactivos_ControlPresupuestal\reactiveForm.web\bin\Debug\netcoreapp2.1\reactiveForm.web.Views.pdb
-C:\docs\featureWinx64\FormsReactivos_ControlPresupuestal\reactiveForm.web\obj\Debug\netcoreapp2.1\reactiveForm.web.csprojAssemblyReference.cache
 C:\docs\featureWinx64\FormsReactivos_ControlPresupuestal\reactiveForm.web\obj\Debug\netcoreapp2.1\reactiveForm.web.csproj.CoreCompileInputs.cache
 C:\docs\featureWinx64\FormsReactivos_ControlPresupuestal\reactiveForm.web\obj\Debug\netcoreapp2.1\reactiveForm.web.RazorAssemblyInfo.cache
 C:\docs\featureWinx64\FormsReactivos_ControlPresupuestal\reactiveForm.web\obj\Debug\netcoreapp2.1\reactiveForm.web.RazorAssemblyInfo.cs
