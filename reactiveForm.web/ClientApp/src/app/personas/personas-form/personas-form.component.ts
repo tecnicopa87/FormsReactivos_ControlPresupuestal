@@ -54,11 +54,11 @@ export class PersonasFormComponent implements OnInit {
     if (this.modoEdicion) {
       persona.id = this.personId;
       this.personService.updatePersona(persona).subscribe(result => this.onSaveSuccess(),
-        error => console.error('Errorupdateperson:'+error));
+        error => console.error('ErrorUpdatePerson:'+error));
     } else { //Modo defaul dar alta
       this.personService.createPersona(persona)
         .subscribe(p => this.onSaveSuccess(),
-          error => console.error('Errocreateperson:'+error));
+          error => console.error('ErroCreatePerson:'+error));
     }
     
   }
