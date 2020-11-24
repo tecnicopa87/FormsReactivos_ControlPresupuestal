@@ -10,7 +10,7 @@ export class LogInterceptorService implements HttpInterceptor {
 
     return next.handle(req).do(evt => {
       if (evt instanceof HttpResponse) {
-        console.log(evt.body); //guardamos log de los headers
+        //console.log(evt.body); //guardamos log de los headers
       }
     });
 
