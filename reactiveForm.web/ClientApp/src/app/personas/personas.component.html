@@ -4,6 +4,9 @@
 <p *ngIf="!(personas && personas.length)">
   No existen personas
 </p>
+<div *ngIf="cargando">
+  <div class="glyphicon glyphicon-hourglass"></div> CARGANDO ...
+</div>
 <table class="table" *ngIf="personas && personas.length">
   <thead>
     <tr>

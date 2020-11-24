@@ -11,14 +11,16 @@ import { error } from 'protractor';
 export class PersonasComponent implements OnInit {
 
   personas: IPersona[];
+  cargando:boolean;
   constructor(private personasService: PersonasService) {
-    
+    this.cargando=true;
   }
 
   ngOnInit() {
     this.personasService.getPersonas()
       .subscribe(pws => this.personas = pws,
       error => console.error('Err_personSERVICE:'+error));
+      this.cargando=false;
   }
 
   delete(person: IPersona) {    
