@@ -36,10 +36,12 @@ namespace reactiveForm.web.Controllers
                 evento.Duracion = time;
                 evento.NoAsistentes = model.asistentes;
                 evento.LugarEvento = model.Summary;
+                evento.ProductosPromocionar= ConvierteArreglo(model.Productospromocionar);
 
                 DBContext.Add(evento);
                 DBContext.SaveChanges();
                 return Created("/",model);
+                 
             }
             catch(Exception ex)
             {
@@ -49,6 +51,24 @@ namespace reactiveForm.web.Controllers
             
 
         }
+        private string ConvierteArreglo(string[] arreglo){
+          string strconvertido="";
+          foreach(var itm in arreglo){
+              strconvertido +=itm +"&&";
+          }
+
+          return strconvertido;
+        }
+        private string[] ConvierteStringEnArreglo(string clavesproducts){
+        var str=clavesproducts.Split("&&");
+        string[] arrconvertido=new string[str.Length-1];
+       int tamano=str.Length-1;
+      for(var i=0; i<tamano ;i++){
+        arrconvertido[i]=str[i];         
+        }
+        return arrconvertido;
+        }
+        
         [HttpGet("[action]")]
         public IEnumerable<DTOEventos> ListaEventos()
         {
@@ -82,7 +102,7 @@ namespace reactiveForm.web.Controllers
             }
             var obj = (from v in DBContext.Eventos
                        where v.IdEvento == id
-                       select new { v.IdEvento,v.Nombre, v.FechaInicio, v.Fechafin, v.Duracion, v.NoAsistentes, v.LugarEvento }).First();
+                       select new { v.IdEvento,v.Nombre, v.FechaInicio, v.Fechafin, v.Duracion, v.NoAsistentes, v.LugarEvento,v.ProductosPromocionar }).First();
             dto.IdEvento = obj.IdEvento;
             dto.Nombreevento = obj.Nombre;
             dto.dateFormatted = obj.FechaInicio;
@@ -90,6 +110,7 @@ namespace reactiveForm.web.Controllers
             dto.duracion = obj.Duracion.Hours;// int duracion=> TimeSpan Duracion
             dto.asistentes = obj.NoAsistentes;
             dto.Summary = obj.LugarEvento;
+            dto.Productospromocionar= ConvierteStringEnArreglo(obj.ProductosPromocionar);
             return dto;
         }
 
@@ -106,6 +127,7 @@ namespace reactiveForm.web.Controllers
             public int IdEvento { get; set; }
             public string Nombreevento { get; set; }
 
+           public string[] Productospromocionar{get;set;}
 
         }
     }

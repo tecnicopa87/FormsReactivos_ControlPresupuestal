@@ -12531,23 +12531,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\pc\\.nuget\\packages\\": {},
+    "C:\\Users\\AlfonsoDev\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\docs\\featureWinx64\\FormsReactivos_ControlPresupuestal\\reactiveForm.web\\reactiveForm.web.csproj",
+      "projectUniqueName": "C:\\repoGit\\FormsReactivos_ControlPresupuestal\\reactiveForm.web\\reactiveForm.web.csproj",
       "projectName": "reactiveForm.web",
-      "projectPath": "C:\\docs\\featureWinx64\\FormsReactivos_ControlPresupuestal\\reactiveForm.web\\reactiveForm.web.csproj",
-      "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
-      "outputPath": "C:\\docs\\featureWinx64\\FormsReactivos_ControlPresupuestal\\reactiveForm.web\\obj\\",
+      "projectPath": "C:\\repoGit\\FormsReactivos_ControlPresupuestal\\reactiveForm.web\\reactiveForm.web.csproj",
+      "packagesPath": "C:\\Users\\AlfonsoDev\\.nuget\\packages\\",
+      "outputPath": "C:\\repoGit\\FormsReactivos_ControlPresupuestal\\reactiveForm.web\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\AlfonsoDev\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

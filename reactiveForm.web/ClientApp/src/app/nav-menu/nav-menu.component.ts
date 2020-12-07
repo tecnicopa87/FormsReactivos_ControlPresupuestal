@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AccountService } from '../account/account.service';
 
 @Component({
@@ -10,12 +11,12 @@ export class NavMenuComponent {
   isExpanded = false;
   nombreusuario: string;
 
-  constructor(private acountServ: AccountService) {
-    this.nombreusuario = localStorage.getItem("user");
-    console.log(this.nombreusuario);
-    if (localStorage.getItem("user") == undefined) {
-      this.nombreusuario = "";
-    }
+  constructor(private acountServ: AccountService, private route: Router) {
+    this.estatuslogin();
+    //console.log(this.nombreusuario);
+    //if (localStorage.getItem("user") == undefined) {
+    //  this.nombreusuario = "";
+    //}
     
   }
   collapse() {
@@ -25,4 +26,18 @@ export class NavMenuComponent {
   toggle() {
     this.isExpanded = !this.isExpanded;
   }
+
+  estatuslogin() {
+    this.nombreusuario = this.acountServ.estaLogueado();
+    return this.nombreusuario;
+  }
+  salirse() {
+    let confirmar = confirm('Está seguro de cerrar sessión?');
+    if (confirmar) {
+      //console.log('confirmó salida');
+      this.acountServ.logout();// el service elimina la sesion del localStorage      
+    }
+    
+  }
+
 }

@@ -16,13 +16,15 @@ export class AccountService {
   }
 
   login(userinfo: IUserInfo) {
-    localStorage.setItem ("user",userinfo.email);    
+    localStorage.setItem ("user",userinfo.email);//*user    
     return this.http.post<any>(this.apiUrl + "/Login", userinfo);
   }
 
   logout() {
+    localStorage.removeItem('user');//*user
     localStorage.removeItem('token');
-    localStorage.removeItem('tokenExpiration');    
+    localStorage.removeItem('tokenExpiration');
+    return this.http.get("/app-nav-menu");
   }
   obtenerToken(): string {
     return localStorage.getItem("token");
@@ -30,11 +32,11 @@ export class AccountService {
   obtenerExpirationToken(): string {
     return localStorage.getItem("tokenExpiration");
   }
-  estaLogueado(): boolean {
+  estaLogueado(): string {
     var exp = this.obtenerExpirationToken();
     if (!exp) {
       // el token no existe
-      return false;
+      return "";
     }
     var now = new Date().getTime();
     var dateExp = new Date(exp);
@@ -43,9 +45,9 @@ export class AccountService {
       // ya expiró token
       localStorage.removeItem('token');
       localStorage.removeItem('tokenExpiration');
-      return false;
+      return "";//false;
     } else {
-      return true;
+      return localStorage.getItem("user");//true  //*user
     }
 
   }
